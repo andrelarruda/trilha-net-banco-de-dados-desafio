@@ -1,26 +1,3 @@
-
-select * from Atores
-
-select * from ElencoFilme
-
-select * from Filmes
-
-select * from FilmesGenero
-
-select * from Generos
-
--- Mostrando os nomes de filmes com seus respectivos generos.
-select f.Nome, f.Ano, g.Genero from Filmes f join FilmesGenero fg on f.Id=fg.IdFilme
-join Generos g on fg.IdGenero=g.Id
-
--- Qts atores tem em cada filme
-select f.Nome, COUNT(ef.IdAtor) AS 'Quantidade de atores no filme'
-from Filmes f join ElencoFilme ef on f.Id=ef.IdFilme
-join Atores a on ef.IdAtor=a.Id
-group by ef.IdFilme, f.Nome
-order by f.Nome
-
-
 -- 1. Buscar o nome e o ano dos filmes
 SELECT Nome, Ano
 FROM Filmes
@@ -85,8 +62,14 @@ SELECT f.Nome AS 'Filme', a.PrimeiroNome, a.UltimoNome, ef.Papel
 FROM Filmes f JOIN ElencoFilme ef ON f.Id=ef.IdFilme
 JOIN Atores a ON ef.IdAtor=a.Id
 
+-- CONSULTAS EXTRAS (testes)
 
-
+-- qtd atores em cada filme
+select f.Nome, COUNT(ef.IdAtor) AS 'Quantidade de atores no filme'
+from Filmes f join ElencoFilme ef on f.Id=ef.IdFilme
+join Atores a on ef.IdAtor=a.Id
+group by ef.IdFilme, f.Nome
+order by f.Nome
 
 
 
